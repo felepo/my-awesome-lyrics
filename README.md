@@ -1,5 +1,3 @@
-## Next.js App Router Course - Starter
+## My Awesome Lyrics
 
-This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
-
-For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+This is a website where it could be useful for showing song's lyrics with a pretty player and handle of playlist. It's a mobil first application.
