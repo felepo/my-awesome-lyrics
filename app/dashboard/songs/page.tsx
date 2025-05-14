@@ -1,10 +1,10 @@
-import LyricsTable from "@/app/ui/lyrics/table";
+import SongsTable from "@/app/ui/songs/table";
 
 export default function Page () {
   return (
     <div className="w-full">
-      <p>Lyrics</p>
-      <LyricsTable />
+      <p>Songs</p>
+      <SongsTable />
     </div>
   );
 }

@@ -11,8 +11,8 @@ import clsx from 'clsx';
 const links = [
   { name: 'Home', href: '/dashboard', icon: HomeIcon },
   {
-    name: 'Lyrics',
-    href: '/dashboard/lyrics',
+    name: 'Songs',
+    href: '/dashboard/songs',
     icon: MusicalNoteIcon,
   },
 ];
