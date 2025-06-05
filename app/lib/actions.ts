@@ -9,8 +9,12 @@ const sql = postgres(process.env.POSTGRES_URL!, {ssl: 'require'});
 
 const FormSchema = z.object({
   id: z.string(),
-  name: z.string(),
-  lyrics: z.string(),
+  name: z
+    .string()
+    .nonempty('El nombre de la canción es requerido.'),
+  lyrics: z
+    .string()
+    .nonempty('Las letras de la canción son requeridas.'),
   author: z.string(),
 });
 
@@ -40,7 +44,7 @@ export async function createSong(prevState: State, formData: FormData) {
   if( !validateFields.success ) {
     return {
       errors: validateFields.error.flatten().fieldErrors,
-      message: 'Missing Fields. Failed to Create Song'
+      message: '¡Campos faltantes! Error al crear una canción.'
     };
   }
 
@@ -56,7 +60,7 @@ export async function createSong(prevState: State, formData: FormData) {
   } catch (error) {
     console.error('Database error: ', error);
     return {
-      message: 'Database Error: Failed to Create Song'
+      message: 'Error de base de datos: Error al crear una canción.'
     };
   }
 
