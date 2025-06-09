@@ -19,6 +19,7 @@ const FormSchema = z.object({
 });
 
 const CreateSong = FormSchema.omit({ id: true });
+const UpdateSong = FormSchema.omit({ id: true });
 
 export type State = {
   errors?: {
@@ -61,6 +62,43 @@ export async function createSong(prevState: State, formData: FormData) {
     console.error('Database error: ', error);
     return {
       message: 'Error de base de datos: Error al crear una canción.'
+    };
+  }
+
+  revalidatePath('/dashboard/songs');
+  redirect('/dashboard/songs');
+}
+
+export async function updateSong(
+  id: string,
+  prevState: State,
+  formData: FormData
+) {
+  const validateFields = UpdateSong.safeParse({
+    name: formData.get('name'),
+    lyrics: formData.get('lyrics'),
+    author: formData.get('author'),
+  });
+
+  if (!validateFields.success) {
+    return {
+      errors: validateFields.error.flatten().fieldErrors,
+      message: '¡Campos faltantes! Error al actualizar la canción.'
+    };
+  }
+
+  const { name, lyrics, author } = validateFields.data;
+
+  try {
+    await sql`
+      UPDATE songs
+      SET name = ${name}, lyrics = ${lyrics}, author = ${author}, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ${id}
+    `;
+  } catch (error) {
+    console.error('Database error:', error);
+    return { 
+      message: 'Error de base de datos: Error al crear una canción.' 
     };
   }
 
