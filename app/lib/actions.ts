@@ -105,3 +105,9 @@ export async function updateSong(
   revalidatePath('/dashboard/songs');
   redirect('/dashboard/songs');
 }
+
+export async function deleteSong(id: string) {
+  await sql`DELETE FROM songs WHERE id = ${id}`;
+
+  revalidatePath('/dashboard/songs');
+}

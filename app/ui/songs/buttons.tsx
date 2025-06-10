@@ -4,6 +4,7 @@ import {
   TrashIcon 
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { deleteSong } from '@/app/lib/actions';
 
 export function CreateSong() {
   return (
@@ -29,10 +30,14 @@ export function UpdateSong({ id }: { id: string }) {
 }
 
 export function DeleteSong({ id }: { id: string }) {
+  const deleteSongWithId = deleteSong.bind(null, id);
+
   return (
-    <button type="submit" className="rounded-md border p-2 hover:bg-gray-100">
-      <span className="sr-only">Delete</span>
-      <TrashIcon className="w-5" />
-    </button>
+    <form action={deleteSongWithId}>
+      <button type="submit" className="rounded-md border p-2 hover:bg-gray-100">
+        <span className="sr-only">Delete</span>
+        <TrashIcon className="w-5" />
+      </button>
+    </form>
   );
 }
