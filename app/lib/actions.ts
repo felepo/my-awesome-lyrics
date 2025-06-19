@@ -38,9 +38,6 @@ export async function createSong(prevState: State, formData: FormData) {
     lyrics: formData.get('lyrics'),
   });
 
-  console.log('validateFields');
-  console.log(validateFields);
-
   // If the form data is invalid, return the errors
   if( !validateFields.success ) {
     return {

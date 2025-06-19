@@ -1,8 +1,17 @@
-import { fetchSongs } from '@/app/lib/data';
+import { fetchFilteredSongs } from '@/app/lib/data';
 import { UpdateSong, DeleteSong } from '@/app/ui/songs/buttons';
 
-export default async function SongsTable() {
-  const songs = await fetchSongs();
+export default async function SongsTable({
+  query,
+  currentPage
+}: {
+  query: string;
+  currentPage: number;
+}) {
+  const songs = await fetchFilteredSongs(query, currentPage);
+
+  console.log('songs');
+  console.log(songs);
 
   return (
     <div className="mt-6 flow-root">
