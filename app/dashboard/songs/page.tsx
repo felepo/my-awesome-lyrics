@@ -1,4 +1,5 @@
 import SongsTable from "@/app/ui/songs/table";
+import Search from '@/app/ui/search';
 import { CreateSong } from '@/app/ui/songs/buttons';
 import Pagination from '@/app/ui/songs/pagination';
 import { lusitana } from '@/app/ui/fonts';
@@ -18,9 +19,10 @@ export default async function Page (props: {
   return (
     <div className="w-full">
       <div className='flex w-full items-center justify-between'>
-        <h1 className={`${lusitana.className} text-2x1`}>Songs</h1>
+        <h1 className={`${lusitana.className} text-2x1`}>Canciones</h1>
       </div>
       <div className="m-t4 flex items-center justify-between gap-2 md:mt-8">
+        <Search placeholder="Buscar canciones..." />
         <CreateSong />
       </div>
       <span>
