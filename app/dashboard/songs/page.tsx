@@ -1,5 +1,6 @@
 import SongsTable from "@/app/ui/songs/table";
 import { CreateSong } from '@/app/ui/songs/buttons';
+import Pagination from '@/app/ui/songs/pagination';
 import { lusitana } from '@/app/ui/fonts';
 import { fetchSongsPages } from '@/app/lib/data';
 
@@ -25,6 +26,9 @@ export default async function Page (props: {
       <span>
         <SongsTable query={query} currentPage={currentPage} />
       </span>
+      <div className='mt-5 flex w-full justify-center'>
+        <Pagination totalPages={totalPages} />
+      </div>
     </div>
   );
 }

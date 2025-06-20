@@ -10,9 +10,6 @@ export default async function SongsTable({
 }) {
   const songs = await fetchFilteredSongs(query, currentPage);
 
-  console.log('songs');
-  console.log(songs);
-
   return (
     <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
