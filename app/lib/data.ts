@@ -2,8 +2,7 @@ import postgres from 'postgres';
 import { Song } from './definitions';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
-
-const ITEMS_PER_PAGE = 3;
+const ITEMS_PER_PAGE = 6;
 
 export async function fetchSongs() {
   try {
