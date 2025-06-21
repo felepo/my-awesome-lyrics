@@ -69,8 +69,10 @@ export default async function SongsTable({
                   <td className="whitespace-nowrap px-3 py-3">
                     {song.author}
                   </td>
-                  <td className="whitespace-nowrap px-3 py-3">
-                    <p className="text-xs italic text-gray-700">{song.lyrics}</p>
+                  <td className="max-w-md whitespace-nowrap px-3 py-3">
+                    <p className="truncate text-xs italic text-gray-700">
+                      {song.lyrics}
+                    </p>
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
