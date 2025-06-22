@@ -7,7 +7,7 @@ import {
   UserIcon,
   DocumentTextIcon
 } from '@heroicons/react/24/outline';
-import { createSong, State } from '@/app/lib/actions';
+import { createSong, State } from '@/app/lib/dashboard/actions';
 import { useActionState } from 'react';
 
 export default function Form() {

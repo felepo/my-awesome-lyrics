@@ -3,7 +3,7 @@ import Search from '@/app/ui/search';
 import { CreateSong } from '@/app/ui/songs/buttons';
 import Pagination from '@/app/ui/songs/pagination';
 import { lusitana } from '@/app/ui/fonts';
-import { fetchSongsPages } from '@/app/lib/data';
+import { fetchSongsPages } from '@/app/lib/dashboard/data';
 
 export default async function Page (props: {
   searchParams?: Promise<{

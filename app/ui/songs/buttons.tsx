@@ -6,7 +6,7 @@ import {
   TrashIcon 
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { deleteSong } from '@/app/lib/actions';
+import { deleteSong } from '@/app/lib/dashboard/actions';
 import { useState, useEffect } from 'react';
 
 export function CreateSong() {

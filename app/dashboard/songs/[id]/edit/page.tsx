@@ -1,5 +1,5 @@
 import Form from '@/app/ui/songs/edit-form';
-import { fetchSongById } from '@/app/lib/data';
+import { fetchSongById } from '@/app/lib/dashboard/data';
 import { notFound } from 'next/navigation';
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {

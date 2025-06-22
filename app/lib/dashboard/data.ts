@@ -73,7 +73,7 @@ export async function fetchFilteredSongs(
       WHERE
         songs.name ILIKE ${`%${query}%`} OR 
         songs.author ILIKE ${`%${query}%`}
-      ORDER BY songs.created_at
+      ORDER BY songs.created_at DESC
       LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
     return songs

@@ -1,6 +1,6 @@
 'use client';
 
-import { Song } from '@/app/lib/definitions';
+import { Song } from '@/app/lib/dashboard/definitions';
 import {
   MusicalNoteIcon,
   UserIcon,
@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-import { State, updateSong } from '@/app/lib/actions';
+import { State, updateSong } from '@/app/lib/dashboard/actions';
 import { useActionState } from 'react';
 
 export default function EditSongForm({ song }: { song: Song }) {
