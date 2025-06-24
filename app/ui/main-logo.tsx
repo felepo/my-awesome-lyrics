@@ -6,8 +6,8 @@ export default function MainLogo() {
     <div
       className={`${lusitana.className} flex flex-row items-center leading-none text-white`}
     >
-      <AdjustmentsHorizontalIcon className="h-12 w-12 flex-shrink-0" />
-      <p className="text-[44px] ml-4 flex-shrink-0">ILPV</p>
+      <AdjustmentsHorizontalIcon className="h-8 w-8 flex-shrink-0" />
+      <p className="text-[44px] ml-3 flex-shrink-0">ILPV</p>
     </div>
   );
 }
