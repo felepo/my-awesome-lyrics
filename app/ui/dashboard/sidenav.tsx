@@ -1,6 +1,6 @@
 import NavLinks from "./nav-links";
 import Link from 'next/link';
-import MainLogo from '@/app/ui/main-logo';
+import MainLogo from '@/app/ui/dashboard/main-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
 
 export default function SideNav() {

@@ -1,5 +1,5 @@
 import { fetchFilteredSongs } from '@/app/lib/dashboard/data';
-import { UpdateSong, DeleteSong } from '@/app/ui/songs/buttons';
+import { UpdateSong, DeleteSong } from '@/app/ui/dashboard/songs/buttons';
 
 export default async function SongsTable({
   query,

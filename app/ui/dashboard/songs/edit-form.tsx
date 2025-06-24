@@ -1,23 +1,25 @@
 'use client';
 
-import Link from 'next/link';
-import { Button } from '@/app/ui/button';
-import { 
-  MusicalNoteIcon, 
+import { Song } from '@/app/lib/dashboard/definitions';
+import {
+  MusicalNoteIcon,
   UserIcon,
   DocumentTextIcon
 } from '@heroicons/react/24/outline';
-import { createSong, State } from '@/app/lib/dashboard/actions';
+import Link from 'next/link';
+import { Button } from '@/app/ui/dashboard/songs/button';
+import { State, updateSong } from '@/app/lib/dashboard/actions';
 import { useActionState } from 'react';
 
-export default function Form() {
+export default function EditSongForm({ song }: { song: Song }) {
   const initialState: State = { message: null, errors: {} };
-  const [state, formAction] = useActionState(createSong, initialState);
+  const updateSongWithId = updateSong.bind(null, song.id);
+  const [state, formAction] = useActionState(updateSongWithId, initialState);
   
   return (
     <form 
       action={formAction}
-      aria-describedby="create-song-error"
+      aria-describedby="update-song-error"
     >
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Name */}
@@ -31,8 +33,9 @@ export default function Form() {
                 id="name"
                 name="name"
                 type="text"
-                placeholder="Ingrese nombre de canción"
+                placeholder="Editando nombre de canción"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                defaultValue={song.name}
                 aria-describedby="name-error"
               />
               <MusicalNoteIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -60,8 +63,9 @@ export default function Form() {
                 id="author"
                 name="author"
                 type="text"
-                placeholder="Ingrese nombre del autor de la canción"
+                placeholder="Editando nombre del autor de la canción"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                defaultValue={song.author}
                 aria-describedby="author-error"
               />
               <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -80,6 +84,7 @@ export default function Form() {
 
         {/* Lyrics */}
         <div className="mb-4">
+
           <label htmlFor="lyrics" className="mb-2 block text-sm font-medium">
             Letra de la canción
           </label>
@@ -91,6 +96,7 @@ export default function Form() {
                 placeholder="Ingrese la letra de la canción"
                 rows={6}
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                defaultValue={song.lyrics}
                 aria-describedby="lyrics-error"
               />
               <DocumentTextIcon className="pointer-events-none absolute left-3 top-3 h-[18px] w-[18px] text-gray-500 peer-focus:text-gray-900" />
@@ -108,7 +114,7 @@ export default function Form() {
         </div>
 
         {/* Form Errors */}
-        <div id="create-song-error" aria-live="polite" aria-atomic="true">
+        <div id="update-song-error" aria-live="polite" aria-atomic="true">
           {state.message && 
             <p className="mt-2 text-sm text-red-500" key={state.message}>
               {state.message}
@@ -123,7 +129,7 @@ export default function Form() {
         >
           Cancelar
         </Link>
-        <Button type="submit">Crear Canción</Button>
+        <Button type="submit">Editar Canción</Button>
       </div>
     </form>
   );

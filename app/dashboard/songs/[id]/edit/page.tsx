@@ -1,4 +1,4 @@
-import Form from '@/app/ui/songs/edit-form';
+import Form from '@/app/ui/dashboard/songs/edit-form';
 import { fetchSongById } from '@/app/lib/dashboard/data';
 import { notFound } from 'next/navigation';
 

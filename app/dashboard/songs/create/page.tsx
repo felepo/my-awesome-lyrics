@@ -1,4 +1,4 @@
-import Form from '@/app/ui/songs/create-form';
+import Form from '@/app/ui/dashboard/songs/create-form';
 
 export default function Page() {
   return (

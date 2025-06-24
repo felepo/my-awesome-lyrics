@@ -1,25 +1,23 @@
 'use client';
 
-import { Song } from '@/app/lib/dashboard/definitions';
-import {
-  MusicalNoteIcon,
+import Link from 'next/link';
+import { Button } from '@/app/ui/dashboard/songs/button';
+import { 
+  MusicalNoteIcon, 
   UserIcon,
   DocumentTextIcon
 } from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import { Button } from '@/app/ui/button';
-import { State, updateSong } from '@/app/lib/dashboard/actions';
+import { createSong, State } from '@/app/lib/dashboard/actions';
 import { useActionState } from 'react';
 
-export default function EditSongForm({ song }: { song: Song }) {
+export default function Form() {
   const initialState: State = { message: null, errors: {} };
-  const updateSongWithId = updateSong.bind(null, song.id);
-  const [state, formAction] = useActionState(updateSongWithId, initialState);
+  const [state, formAction] = useActionState(createSong, initialState);
   
   return (
     <form 
       action={formAction}
-      aria-describedby="update-song-error"
+      aria-describedby="create-song-error"
     >
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Name */}
@@ -33,9 +31,8 @@ export default function EditSongForm({ song }: { song: Song }) {
                 id="name"
                 name="name"
                 type="text"
-                placeholder="Editando nombre de canción"
+                placeholder="Ingrese nombre de canción"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                defaultValue={song.name}
                 aria-describedby="name-error"
               />
               <MusicalNoteIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -63,9 +60,8 @@ export default function EditSongForm({ song }: { song: Song }) {
                 id="author"
                 name="author"
                 type="text"
-                placeholder="Editando nombre del autor de la canción"
+                placeholder="Ingrese nombre del autor de la canción"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                defaultValue={song.author}
                 aria-describedby="author-error"
               />
               <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -84,7 +80,6 @@ export default function EditSongForm({ song }: { song: Song }) {
 
         {/* Lyrics */}
         <div className="mb-4">
-
           <label htmlFor="lyrics" className="mb-2 block text-sm font-medium">
             Letra de la canción
           </label>
@@ -96,7 +91,6 @@ export default function EditSongForm({ song }: { song: Song }) {
                 placeholder="Ingrese la letra de la canción"
                 rows={6}
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                defaultValue={song.lyrics}
                 aria-describedby="lyrics-error"
               />
               <DocumentTextIcon className="pointer-events-none absolute left-3 top-3 h-[18px] w-[18px] text-gray-500 peer-focus:text-gray-900" />
@@ -114,7 +108,7 @@ export default function EditSongForm({ song }: { song: Song }) {
         </div>
 
         {/* Form Errors */}
-        <div id="update-song-error" aria-live="polite" aria-atomic="true">
+        <div id="create-song-error" aria-live="polite" aria-atomic="true">
           {state.message && 
             <p className="mt-2 text-sm text-red-500" key={state.message}>
               {state.message}
@@ -129,7 +123,7 @@ export default function EditSongForm({ song }: { song: Song }) {
         >
           Cancelar
         </Link>
-        <Button type="submit">Editar Canción</Button>
+        <Button type="submit">Crear Canción</Button>
       </div>
     </form>
   );

@@ -1,7 +1,7 @@
-import SongsTable from "@/app/ui/songs/table";
-import Search from '@/app/ui/search';
-import { CreateSong } from '@/app/ui/songs/buttons';
-import Pagination from '@/app/ui/songs/pagination';
+import SongsTable from "@/app/ui/dashboard/songs/table";
+import Search from '@/app/ui/dashboard/songs/search';
+import { CreateSong } from '@/app/ui/dashboard/songs/buttons';
+import Pagination from '@/app/ui/dashboard/songs/pagination';
 import { lusitana } from '@/app/ui/fonts';
 import { fetchSongsPages } from '@/app/lib/dashboard/data';
 
