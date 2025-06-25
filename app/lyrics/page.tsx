@@ -1,6 +1,8 @@
 import { lusitana } from '@/app/ui/fonts';
 import LyricsList from '@/app/ui/lyrics/lyrics-list';
 import Search from '@/app/ui/lyrics/search';
+import { fetchLyricsPages } from '@/app/lib/lyrics/data';
+import Pagination from '../ui/lyrics/pagination';
 
 export default async function Page (props: {
   searchParams?: Promise<{
@@ -11,6 +13,7 @@ export default async function Page (props: {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
+  const totalPages = await fetchLyricsPages(query);
 
   return (
     <div className="w-full">
@@ -23,6 +26,9 @@ export default async function Page (props: {
       <span>
         <LyricsList query={query} currentPage={currentPage} />
       </span>
+      <div className="mt-5 flex w-full justify-center">
+        <Pagination totalPages={totalPages} />
+      </div>
     </div>
   );
 }
