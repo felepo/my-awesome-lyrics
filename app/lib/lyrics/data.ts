@@ -46,3 +46,22 @@ export async function fetchLyricsPages(query: string) {
     throw new Error('Failed to fetch total number of songs.');
   }
 }
+
+export async function fetchLyricsById(id: string) {
+  try {
+    const data = await sql<Song[]>`
+      SELECT
+        songs.id,
+        songs.name,
+        songs.lyrics,
+        songs.author
+      FROM songs
+      WHERE songs.id = ${id}
+      LIMIT 1
+    `;
+    return data[0] || null;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch lyric by id.');
+  }
+}

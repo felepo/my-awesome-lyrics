@@ -1,4 +1,5 @@
 import { fetchFilteredLyrics } from '@/app/lib/lyrics/data';
+import Link from 'next/link';
 
 export default async function LyricsList({
   query,
@@ -16,9 +17,10 @@ export default async function LyricsList({
           {/* Lyrics List: mobile */}
           <div className="md:hidden">
             {lyrics?.map((lyric) => (
-              <div
+              <Link
                 key={lyric.id}
-                className="mb-2 w-full rounded-md bg-white p-4"
+                href={`/lyrics/${lyric.id}`}
+                className="mb-2 block w-full rounded-md bg-white p-4"
               >
                 <div className="flex items-center justify-between border-b pb-0">
                   <div>
@@ -31,7 +33,7 @@ export default async function LyricsList({
                 <div className="flex w-full items-center justify-between pt-4">
                   <p className="text-xs italic line-clamp-3 text-gray-700">{lyric.lyrics}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           {/* Lyrics table: desktop */}
